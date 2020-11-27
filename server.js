@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import mongoose, { connection } from 'mongoose';
+import mongoose from 'mongoose';
 
 import Issue from './models/issue';
 
@@ -16,7 +16,6 @@ mongoose.connect('mongodb://localhost:27017/issues', { useNewUrlParser: true, us
 mongoose.connection.once('open', () => {
     console.log('MongoBD database connection establised successfully')
 });
-
 
 router.route('/issues').get((req, res) => {
     Issue.find((err, issues) => {
